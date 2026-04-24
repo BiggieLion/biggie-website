@@ -1,3 +1,5 @@
+import { techIcons } from "@/lib/tech-icons";
+
 interface Project {
   name: string;
   description: string;
@@ -72,14 +74,26 @@ export function ProjectCard({ project }: { project: Project }) {
         <p className="text-xs text-muted leading-relaxed">{project.description}</p>
       </div>
       <div className="flex flex-wrap gap-1.5 mt-4">
-        {project.stack.map((s) => (
-          <span
-            key={s}
-            className="px-2 py-0.5 rounded text-xs bg-card-border/60 text-muted border border-card-border"
-          >
-            {s}
-          </span>
-        ))}
+        {project.stack.map((s) => {
+          const tech = techIcons[s];
+          return (
+            <span
+              key={s}
+              className="flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-card-border/60 text-muted border border-card-border"
+            >
+              {tech && (
+                <img
+                  src={tech.icon}
+                  alt={s}
+                  width={12}
+                  height={12}
+                  className={`w-3 h-3 shrink-0${tech.invert ? " dark:invert" : ""}`}
+                />
+              )}
+              {s}
+            </span>
+          );
+        })}
       </div>
     </a>
   );
