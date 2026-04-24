@@ -7,7 +7,10 @@ export async function GET() {
   const city = process.env.NEXT_PUBLIC_CITY ?? "Nextlalpan";
 
   if (!apiKey) {
-    return NextResponse.json({ error: "OpenWeather API key not configured" }, { status: 500 });
+    return NextResponse.json(
+      { error: "OpenWeather API key not configured" },
+      { status: 500 },
+    );
   }
 
   try {
@@ -27,6 +30,9 @@ export async function GET() {
       wind: Math.round(data.wind.speed),
     });
   } catch {
-    return NextResponse.json({ error: "Failed to fetch weather data" }, { status: 502 });
+    return NextResponse.json(
+      { error: "Failed to fetch weather data" },
+      { status: 502 },
+    );
   }
 }
