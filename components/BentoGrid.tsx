@@ -55,20 +55,20 @@ export function BentoGrid() {
           ))}
         </div>
 
-        {/* Row 3: hours-backend (1) | Weather (1) | Tech Stack (2) */}
+        {/* Row 3: hours-backend (1) | Connect (1) | Tech Stack (2) */}
         <motion.div variants={item} className="lg:col-span-1">
           <ProjectCard project={projects[4]} />
         </motion.div>
         <motion.div variants={item} className="lg:col-span-1">
-          <WeatherCard />
+          <SocialCard />
         </motion.div>
         <motion.div variants={item} className="sm:col-span-2 lg:col-span-2">
           <SkillsCard />
         </motion.div>
 
-        {/* Row 4: Social (1) | Music (1) | Discord (2) */}
+        {/* Row 4: Weather (1) | Music (1) | Discord (2) */}
         <motion.div variants={item} className="lg:col-span-1">
-          <SocialCard />
+          <WeatherCard />
         </motion.div>
         <motion.div variants={item} className="lg:col-span-1">
           <MusicCard />
