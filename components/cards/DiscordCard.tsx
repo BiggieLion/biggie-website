@@ -26,10 +26,22 @@ const DiscordIcon = (
   </svg>
 );
 
+function activityIconUrl(activity: {
+  application_id?: string;
+  assets?: { large_image?: string };
+}) {
+  if (!activity.application_id || !activity.assets?.large_image) return null;
+  const img = activity.assets.large_image;
+  // External image reference (e.g. Spotify)
+  if (img.startsWith("external/")) return null;
+  return `https://cdn.discordapp.com/app-assets/${activity.application_id}/${img}.png`;
+}
+
 export function DiscordCard() {
   const { data, isLoading } = useSWR("/api/discord", fetcher, { refreshInterval: 10000 });
   const presence = data?.data;
   const hasError = data?.error || (!isLoading && !presence);
+  const activity = presence?.activities?.[0];
 
   return (
     <div className="bento-card col-span-1 row-span-1 p-5 flex flex-col">
@@ -59,9 +71,10 @@ export function DiscordCard() {
       )}
 
       {!isLoading && presence && (
-        <div className="flex-1 flex flex-col gap-3">
+        <div className="flex-1 flex flex-col justify-between gap-3">
+          {/* User row */}
           <div className="flex items-center gap-3">
-            <div className="relative">
+            <div className="relative shrink-0">
               {presence.discord_user?.avatar ? (
                 <Image
                   src={`https://cdn.discordapp.com/avatars/${presence.discord_user.id}/${presence.discord_user.avatar}.png?size=64`}
@@ -79,8 +92,8 @@ export function DiscordCard() {
                 className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-card ${statusColors[presence.discord_status] ?? "bg-neutral-500"}`}
               />
             </div>
-            <div>
-              <p className="text-sm font-semibold text-foreground leading-none">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-foreground leading-none truncate">
                 {presence.discord_user?.global_name ?? presence.discord_user?.username ?? "BiggieLion"}
               </p>
               <p className="text-xs text-muted mt-1">
@@ -89,12 +102,27 @@ export function DiscordCard() {
             </div>
           </div>
 
-          {presence.activities?.length > 0 && (
-            <div className="mt-auto">
-              <p className="text-xs text-muted truncate">{presence.activities[0].name}</p>
-              {presence.activities[0].state && (
-                <p className="text-xs text-muted/70 truncate">{presence.activities[0].state}</p>
+          {/* Activity row */}
+          {activity && (
+            <div className="flex items-start gap-2 bg-card-border/40 rounded-lg p-2">
+              {activityIconUrl(activity) && (
+                <Image
+                  src={activityIconUrl(activity)!}
+                  alt={activity.name}
+                  width={32}
+                  height={32}
+                  className="rounded shrink-0"
+                />
               )}
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-semibold text-foreground truncate">{activity.name}</p>
+                {activity.details && (
+                  <p className="text-xs text-muted truncate">{activity.details}</p>
+                )}
+                {activity.state && (
+                  <p className="text-xs text-muted/60 truncate">{activity.state}</p>
+                )}
+              </div>
             </div>
           )}
         </div>
