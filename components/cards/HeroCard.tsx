@@ -33,6 +33,16 @@ export function HeroCard() {
             I build backend systems and AI integrations that scale.
             4+ years shipping reliable APIs with NestJS, Python, and FastAPI.
           </p>
+          <div className="flex gap-2 mt-4 flex-wrap">
+            {["AI / ML", "Backend", "Frontend", "Automation"].map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <a
             href="https://www.linkedin.com/in/jairleon/"
             target="_blank"
