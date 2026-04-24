@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import dynamic from "next/dynamic";
+
+const ThemeToggle = dynamic(
+  () => import("@/components/ThemeToggle").then((m) => ({ default: m.ThemeToggle })),
+  { ssr: false, loading: () => <div className="w-8 h-8" /> }
+);
 
 export function HeroCard() {
   return (
