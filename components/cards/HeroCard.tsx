@@ -30,8 +30,8 @@ export function HeroCard() {
 
         <div>
           <p className="text-muted text-sm leading-relaxed">
-            Telematics engineer building backend systems and AI integrations.
-            4+ years turning complex problems into reliable, scalable APIs.
+            I build backend systems and AI integrations that scale.
+            4+ years shipping reliable APIs with NestJS, Python, and FastAPI.
           </p>
           <div className="flex gap-2 mt-4 flex-wrap">
             {["NestJS", "TypeScript", "Python", "FastAPI"].map((tag) => (
@@ -42,6 +42,21 @@ export function HeroCard() {
                 {tag}
               </span>
             ))}
+          </div>
+          {/* CTAs */}
+          <div className="flex gap-2 mt-5 flex-wrap">
+            <a
+              href="#projects"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
+            >
+              View my work ↓
+            </a>
+            <a
+              href="mailto:hleonr1300@gmail.com"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+            >
+              Get in touch →
+            </a>
           </div>
         </div>
       </div>

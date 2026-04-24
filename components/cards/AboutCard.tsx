@@ -5,13 +5,15 @@ export function AboutCard() {
         About
       </h2>
       <p className="text-foreground text-sm leading-relaxed">
-        I&apos;m a Telematics Engineer from Mexico specializing in backend architecture and
-        AI systems. I design and build REST APIs, microservices, and intelligent pipelines
-        using NestJS, Python, and modern ML frameworks. I care deeply about clean code,
+        I&apos;m a Backend &amp; AI Engineer from Mexico with 4+ years designing and
+        building REST APIs, microservices, and intelligent pipelines. I specialize in
+        NestJS, Python, and FastAPI — and I care deeply about clean code,
         developer experience, and shipping things that actually work.
       </p>
       <p className="text-muted text-sm leading-relaxed mt-3">
-        Currently working at Rotoplas as a Fullstack Engineer, also working on a year-long project at Google.
+        Currently working at <span className="text-foreground font-medium">Rotoplas</span> as
+        a Fullstack Engineer, and contributing to a year-long project
+        at <span className="text-foreground font-medium">Google</span>.
       </p>
     </div>
   );

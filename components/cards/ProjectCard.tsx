@@ -11,32 +11,32 @@ interface Project {
 const projects: Project[] = [
   {
     name: "pt2-backend-v2",
-    description: "Degree project backend — scalable REST API built with NestJS and TypeScript.",
+    description: "Production-grade REST API with auth, roles, and real-time sync — built with NestJS and TypeScript.",
     stack: ["NestJS", "TypeScript"],
     url: "https://github.com/BiggieLion/pt2-backend-v2",
   },
   {
     name: "pt2-frontend",
-    description: "Frontend client for the pt2 degree project, built with TypeScript.",
+    description: "Full-featured client app consuming the pt2 API — TypeScript from end to end.",
     stack: ["TypeScript"],
     url: "https://github.com/BiggieLion/pt2-frontend",
   },
   {
     name: "pt2-ai",
-    description: "AI/ML services powering the pt2 platform — Python-based inference pipeline.",
+    description: "AI inference pipeline integrating ML models into a production API — Python-powered.",
     stack: ["Python", "AI/ML"],
     url: "https://github.com/BiggieLion/pt2-ai",
   },
   {
     name: "Introducción a Mongoose",
-    description: "Educational guide to Mongoose with full CRUD operations. ⭐ 10",
+    description: "Practical Mongoose guide with full CRUD — used as a learning resource by the community.",
     stack: ["JavaScript", "MongoDB"],
     url: "https://github.com/BiggieLion/Introduccion-a-Mongoose",
     stars: 10,
   },
   {
     name: "hours-backend",
-    description: "Python backend for tracking and managing work hours. ⭐ 4",
+    description: "REST API for time tracking and work-hour management, built with Python and Flask.",
     stack: ["Python", "Flask"],
     url: "https://github.com/BiggieLion/hours-backend",
     stars: 4,
