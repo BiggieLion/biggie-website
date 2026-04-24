@@ -33,6 +33,14 @@ export function HeroCard() {
             I build backend systems and AI integrations that scale.
             4+ years shipping reliable APIs with NestJS, Python, and FastAPI.
           </p>
+          <a
+            href="https://www.linkedin.com/in/jairleon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-accent hover:underline mt-3 inline-block"
+          >
+            Read more...
+          </a>
           {/* CTAs */}
           <div className="flex gap-2 mt-5 flex-wrap">
             <a
