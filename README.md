@@ -61,10 +61,20 @@ app/
 └── globals.css
 components/
 ├── cards/                  # Individual bento cards
+│   ├── AboutCard.tsx
+│   ├── DiscordCard.tsx
+│   ├── HeroCard.tsx
+│   ├── MusicCard.tsx
+│   ├── ProjectCard.tsx
+│   ├── SkillsCard.tsx
+│   ├── SocialCard.tsx
+│   └── WeatherCard.tsx
 ├── BentoGrid.tsx
 ├── ThemeProvider.tsx
 ├── ThemeToggle.tsx
 └── UnavailableState.tsx
+lib/
+└── tech-icons.ts           # Technology icon mappings
 ```
 
 ## Deploy
