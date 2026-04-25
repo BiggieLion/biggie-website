@@ -1,6 +1,6 @@
-# Jair León — Personal Portfolio
+# Jair León — Backend & AI Engineer
 
-Personal portfolio website built with a bento grid layout. Features live widgets for Discord status, Apple Music last played, and local weather.
+Personal portfolio of Jair León, a Telematics & Backend/AI Engineer specializing in NestJS, TypeScript, Python, and FastAPI. Built with a bento grid layout. Features live widgets for Discord status, Apple Music last played, and local weather.
 
 ## Stack
 
@@ -26,10 +26,10 @@ Personal portfolio website built with a bento grid layout. Features live widgets
 npm install
 ```
 
-2. Copy the env template and fill in your keys:
+2. Create a `.env.local` file in the project root and fill in your keys:
 
 ```bash
-cp .env.local.example .env.local
+touch .env.local
 ```
 
 | Variable | Description |
@@ -61,10 +61,20 @@ app/
 └── globals.css
 components/
 ├── cards/                  # Individual bento cards
+│   ├── AboutCard.tsx
+│   ├── DiscordCard.tsx
+│   ├── HeroCard.tsx
+│   ├── MusicCard.tsx
+│   ├── ProjectCard.tsx
+│   ├── SkillsCard.tsx
+│   ├── SocialCard.tsx
+│   └── WeatherCard.tsx
 ├── BentoGrid.tsx
 ├── ThemeProvider.tsx
 ├── ThemeToggle.tsx
 └── UnavailableState.tsx
+lib/
+└── tech-icons.ts           # Tech stack icon mappings
 ```
 
 ## Deploy
