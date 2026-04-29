@@ -5,8 +5,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const ThemeToggle = dynamic(
-  () => import("@/components/ThemeToggle").then((m) => ({ default: m.ThemeToggle })),
-  { ssr: false, loading: () => <div className="w-8 h-8" /> }
+  () =>
+    import("@/components/ThemeToggle").then((m) => ({
+      default: m.ThemeToggle,
+    })),
+  { ssr: false, loading: () => <div className="w-8 h-8" /> },
 );
 
 export function HeroCard() {
@@ -15,7 +18,9 @@ export function HeroCard() {
 
   useEffect(() => {
     if (!showResume) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setShowResume(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowResume(false);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [showResume]);
@@ -38,8 +43,8 @@ export function HeroCard() {
 
         <div>
           <p className="text-muted text-sm leading-relaxed">
-            I build backend systems and AI integrations that scale.
-            4+ years shipping reliable APIs with NestJS, Python, and FastAPI.
+            I build backend systems and AI integrations that scale. 4+ years
+            shipping reliable APIs with NestJS, Python, and FastAPI.
           </p>
           <div className="flex gap-2 mt-4 flex-wrap">
             {["AI / ML", "Backend", "Frontend", "Automation"].map((tag) => (
@@ -65,7 +70,7 @@ export function HeroCard() {
               onClick={() => setShowResume(true)}
               className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity cursor-pointer"
             >
-              View Résumé ↗
+              View Resume ↗
             </button>
             <a
               href="mailto:hleonr1300@gmail.com"
@@ -88,7 +93,9 @@ export function HeroCard() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-card-border shrink-0">
-              <span className="text-sm font-semibold text-foreground">Résumé</span>
+              <span className="text-sm font-semibold text-foreground">
+                Résumé
+              </span>
               <div className="flex items-center gap-3">
                 <a
                   href="/resume.pdf"
