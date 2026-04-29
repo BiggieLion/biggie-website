@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { techIcons } from "@/lib/tech-icons";
 
 interface Project {
@@ -82,7 +83,7 @@ export function ProjectCard({ project }: { project: Project }) {
               className="flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-card-border/60 text-muted border border-card-border"
             >
               {tech && (
-                <img
+                <Image
                   src={tech.icon}
                   alt={s}
                   width={12}

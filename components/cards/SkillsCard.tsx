@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { techIcons } from "@/lib/tech-icons";
 
 const skills = [
@@ -38,7 +39,7 @@ export function SkillsCard() {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-card-border/60 text-foreground border border-card-border hover:border-accent/40 hover:text-accent transition-colors"
             >
               {tech ? (
-                <img
+                <Image
                   src={tech.icon}
                   alt={name}
                   width={16}
