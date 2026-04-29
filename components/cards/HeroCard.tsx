@@ -66,18 +66,18 @@ export function HeroCard() {
           </a>
           {/* CTAs */}
           <div className="flex gap-2 mt-5 flex-wrap">
-            <button
-              onClick={() => setShowResume(true)}
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity cursor-pointer"
-            >
-              View Resume ↗
-            </button>
             <a
               href="mailto:hleonr1300@gmail.com"
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
             >
               Get in touch →
             </a>
+            <button
+              onClick={() => setShowResume(true)}
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors cursor-pointer"
+            >
+              View Resume ↗
+            </button>
           </div>
         </div>
       </div>
