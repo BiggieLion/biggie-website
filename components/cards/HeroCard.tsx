@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ThemeToggle = dynamic(
   () => import("@/components/ThemeToggle").then((m) => ({ default: m.ThemeToggle })),
@@ -11,6 +11,14 @@ const ThemeToggle = dynamic(
 
 export function HeroCard() {
   const [avatarFailed, setAvatarFailed] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+
+  useEffect(() => {
+    if (!showResume) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setShowResume(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showResume]);
 
   return (
     <div className="bento-card col-span-2 row-span-1 flex overflow-hidden">
@@ -53,12 +61,12 @@ export function HeroCard() {
           </a>
           {/* CTAs */}
           <div className="flex gap-2 mt-5 flex-wrap">
-            <a
-              href="#projects"
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
+            <button
+              onClick={() => setShowResume(true)}
+              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity cursor-pointer"
             >
-              View my work ↓
-            </a>
+              View Résumé ↗
+            </button>
             <a
               href="mailto:hleonr1300@gmail.com"
               className="px-4 py-1.5 rounded-lg text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
@@ -68,6 +76,44 @@ export function HeroCard() {
           </div>
         </div>
       </div>
+
+      {/* Resume modal */}
+      {showResume && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          onClick={() => setShowResume(false)}
+        >
+          <div
+            className="relative w-full max-w-3xl h-[90vh] bg-card rounded-2xl overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-card-border shrink-0">
+              <span className="text-sm font-semibold text-foreground">Résumé</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="text-xs text-accent hover:underline"
+                >
+                  Download
+                </a>
+                <button
+                  onClick={() => setShowResume(false)}
+                  className="text-muted hover:text-foreground transition-colors text-lg leading-none cursor-pointer"
+                  aria-label="Close"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <iframe
+              src="/resume.pdf"
+              className="flex-1 w-full"
+              title="Résumé"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Right: portrait */}
       <div className="relative w-40 shrink-0 self-stretch">

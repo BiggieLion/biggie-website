@@ -14,13 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jair León — Backend & AI Engineer",
+  title: "Jair León - Backend & AI Engineer",
   description:
     "Personal portfolio of Jair León, a Telematics & Backend/AI Engineer specializing in NestJS, TypeScript, Python, and FastAPI.",
   openGraph: {
     title: "Jair León — Backend & AI Engineer",
-    description:
-      "Personal portfolio of Jair León, Backend & AI Engineer.",
+    description: "Personal portfolio of Jair León, Backend & AI Engineer.",
     url: "https://biggielion.dev",
     siteName: "Jair León",
     locale: "en_US",
