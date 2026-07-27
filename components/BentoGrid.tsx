@@ -31,12 +31,12 @@ const item = {
 
 export function BentoGrid() {
   return (
-    <main className="min-h-screen bg-background px-4 py-8 md:px-8 md:py-12">
+    <main className="min-h-screen bg-background px-4 py-8 md:px-8 md:py-12 flex items-center">
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+        className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
       >
         {/* Row 1: Hero (2 cols) | About (2 cols) */}
         <motion.div variants={item} className="sm:col-span-2 lg:col-span-2">
