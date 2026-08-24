@@ -35,7 +35,7 @@ export function HeroCard() {
               Jair León
             </h1>
             <p className="text-accent font-medium text-sm mt-0.5">
-              Backend &amp; AI Engineer
+              Full-Stack Engineer · NestJS · TypeScript · GCP
             </p>
           </div>
           <ThemeToggle />
@@ -43,8 +43,9 @@ export function HeroCard() {
 
         <div>
           <p className="text-muted text-sm leading-relaxed">
-            I build backend systems and AI integrations that scale. 4+ years
-            shipping reliable APIs with NestJS, Python, and FastAPI.
+            I build event-driven platforms and AI-powered products that scale.
+            4+ years shipping reliable APIs with NestJS, TypeScript, and
+            Google Cloud.
           </p>
           <div className="flex gap-2 mt-4 flex-wrap">
             {["AI / ML", "Backend", "Frontend", "Automation"].map((tag) => (

@@ -2,9 +2,9 @@ import Image from "next/image";
 import { techIcons } from "@/lib/tech-icons";
 
 const skills = [
-  "TypeScript", "Python", "JavaScript", "NestJS",
-  "Node.js", "FastAPI", "Flask", "PostgreSQL",
-  "MongoDB", "Docker", "REST APIs", "AI/ML",
+  "TypeScript", "JavaScript", "Python", "NestJS",
+  "Node.js", "Google Cloud", "MySQL", "MongoDB",
+  "Redis", "Docker", "REST APIs", "AI/ML",
 ];
 
 function RestIcon() {

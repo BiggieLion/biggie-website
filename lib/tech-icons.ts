@@ -11,4 +11,7 @@ export const techIcons: Record<string, { icon: string; invert?: boolean }> = {
   PostgreSQL:  { icon: `${CDN}/postgresql/postgresql-original.svg` },
   MongoDB:     { icon: `${CDN}/mongodb/mongodb-original.svg` },
   Docker:      { icon: `${CDN}/docker/docker-original.svg` },
+  "Google Cloud": { icon: `${CDN}/googlecloud/googlecloud-original.svg` },
+  MySQL:       { icon: `${CDN}/mysql/mysql-original.svg` },
+  Redis:       { icon: `${CDN}/redis/redis-original.svg` },
 };
