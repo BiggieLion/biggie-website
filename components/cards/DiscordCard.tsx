@@ -30,10 +30,11 @@ function activityIconUrl(activity: {
   application_id?: string;
   assets?: { large_image?: string };
 }) {
-  if (!activity.application_id || !activity.assets?.large_image) return null;
+  if (!activity.assets?.large_image) return null;
   const img = activity.assets.large_image;
-  // External image reference (e.g. Spotify)
-  if (img.startsWith("external/")) return null;
+  // Media-proxy reference (e.g. Apple Music album art): mp:external/<hash>/https/<host>/<path>
+  if (img.startsWith("mp:")) return `https://media.discordapp.net/${img.slice(3)}`;
+  if (img.startsWith("external/") || !activity.application_id) return null;
   return `https://cdn.discordapp.com/app-assets/${activity.application_id}/${img}.png`;
 }
 
