@@ -11,22 +11,22 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "pt2-backend-v2",
-    description: "Production-grade REST API with auth, roles, and real-time sync — built with NestJS and TypeScript.",
-    stack: ["NestJS", "TypeScript"],
+    name: "Credit Risk Platform · Backend",
+    description: "NestJS microservices that assess the credit risk of loan applications with an ML model — Dockerized and deployed to AWS ECR.",
+    stack: ["NestJS", "TypeScript", "Docker", "AWS"],
     url: "https://github.com/BiggieLion/pt2-backend-v2",
   },
   {
-    name: "pt2-frontend",
-    description: "Full-featured client app consuming the pt2 API — TypeScript from end to end.",
-    stack: ["TypeScript"],
-    url: "https://github.com/BiggieLion/pt2-frontend",
+    name: "Credit Risk Platform · AI",
+    description: "Credit-scoring model trained with scikit-learn and NumPy that powers the platform's risk decisions.",
+    stack: ["Python", "scikit-learn"],
+    url: "https://github.com/BiggieLion/pt2-ai",
   },
   {
-    name: "pt2-ai",
-    description: "AI inference pipeline integrating ML models into a production API — Python-powered.",
-    stack: ["Python", "AI/ML"],
-    url: "https://github.com/BiggieLion/pt2-ai",
+    name: "TimothyApp",
+    description: "The pioneer helper — a full-stack app I'm building end to end with NestJS (in progress).",
+    stack: ["NestJS", "TypeScript"],
+    url: "https://github.com/BiggieLion/timothy-back",
   },
   {
     name: "Introducción a Mongoose",
@@ -34,6 +34,12 @@ const projects: Project[] = [
     stack: ["JavaScript", "MongoDB"],
     url: "https://github.com/BiggieLion/Introduccion-a-Mongoose",
     stars: 10,
+  },
+  {
+    name: "Credit Risk Platform · Frontend",
+    description: "Angular client for the credit risk platform, deployed on Vercel.",
+    stack: ["Angular", "TypeScript"],
+    url: "https://github.com/BiggieLion/pt2-frontend",
   },
   {
     name: "hours-backend",

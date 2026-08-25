@@ -23,11 +23,12 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
-// projects[0] pt2-backend-v2
-// projects[1] pt2-frontend
-// projects[2] pt2-ai
+// projects[0] Credit Risk Platform · Backend
+// projects[1] Credit Risk Platform · AI
+// projects[2] TimothyApp
 // projects[3] Introducción a Mongoose
-// projects[4] hours-backend
+// projects[4] Credit Risk Platform · Frontend
+// projects[5] hours-backend (not rendered)
 
 export function BentoGrid() {
   return (
@@ -46,7 +47,7 @@ export function BentoGrid() {
           <AboutCard />
         </motion.div>
 
-        {/* Row 2: pt2-backend | pt2-frontend | pt2-ai | Mongoose (1 col each) */}
+        {/* Row 2: CRP Backend | CRP AI | TimothyApp | Mongoose (1 col each) */}
         <div id="projects" className="contents">
           {projects.slice(0, 4).map((project) => (
             <motion.div key={project.name} variants={item} className="lg:col-span-1">
@@ -55,7 +56,7 @@ export function BentoGrid() {
           ))}
         </div>
 
-        {/* Row 3: hours-backend (1) | Connect (1) | Tech Stack (2) */}
+        {/* Row 3: CRP Frontend (1) | Connect (1) | Tech Stack (2) */}
         <motion.div variants={item} className="lg:col-span-1">
           <ProjectCard project={projects[4]} />
         </motion.div>
