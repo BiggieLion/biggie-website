@@ -3,8 +3,9 @@ import { techIcons } from "@/lib/tech-icons";
 
 const skills = [
   "TypeScript", "JavaScript", "Python", "NestJS",
-  "Node.js", "Google Cloud", "MySQL", "MongoDB",
-  "Redis", "Docker", "REST APIs", "AI/ML",
+  "Node.js", "Flask", "Angular", "Google Cloud",
+  "AWS", "Azure", "Docker", "Kubernetes",
+  "MySQL", "MongoDB", "Redis", "REST APIs", "AI/ML",
 ];
 
 function RestIcon() {

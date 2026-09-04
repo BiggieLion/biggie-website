@@ -17,4 +17,6 @@ export const techIcons: Record<string, { icon: string; invert?: boolean }> = {
   Angular:     { icon: `${CDN}/angular/angular-original.svg` },
   AWS:         { icon: `${CDN}/amazonwebservices/amazonwebservices-original-wordmark.svg` },
   "scikit-learn": { icon: `${CDN}/scikitlearn/scikitlearn-original.svg` },
+  Azure:       { icon: `${CDN}/azure/azure-original.svg` },
+  Kubernetes:  { icon: `${CDN}/kubernetes/kubernetes-original.svg` },
 };

@@ -16,8 +16,11 @@ export function AboutCard() {
         building the event-driven platform that syncs HubSpot CRM with
         logistics systems — transactional outbox, HMAC-secured APIs, full
         OpenTelemetry observability, and AI-assisted engineering workflows
-        with Claude Code. On the side, contributing to a year-long project
-        at <span className="text-foreground font-medium">Google</span>.
+        with Claude Code (recently cut a production endpoint from ~2 minutes
+        to seconds). Previously at FP Alpha, working on an AI document-analysis
+        pipeline — Bull/Redis queues feeding GPT-4o and Azure Document
+        Intelligence extractors. On the side, contributing to a year-long
+        project at <span className="text-foreground font-medium">Google</span>.
       </p>
     </div>
   );
