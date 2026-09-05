@@ -13,9 +13,9 @@ export function AboutCard() {
       </p>
       <p className="text-muted text-sm leading-relaxed mt-3">
         Currently at <span className="text-foreground font-medium">Grupo Rotoplas</span>,
-        building the event-driven platform that syncs HubSpot CRM with
-        logistics systems — transactional outbox, HMAC-secured APIs, full
-        OpenTelemetry observability, and AI-assisted engineering workflows
+        building the event-driven platform syncing HubSpot CRM with Bringoz
+        logistics, Commercetools, and Fluent OMS — transactional outbox, HMAC-secured
+        APIs, full OpenTelemetry observability, and AI-assisted engineering workflows
         with Claude Code (recently cut a production endpoint from ~2 minutes
         to seconds). Previously at FP Alpha, working on an AI document-analysis
         pipeline — Bull/Redis queues feeding GPT-4o and Azure Document

@@ -16,20 +16,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jair León - Backend & AI Engineer",
+  title: "Jair León — Full-Stack & Cloud Engineer",
   description:
-    "Personal portfolio of Jair León, a Telematics & Backend/AI Engineer specializing in NestJS, TypeScript, Python, and FastAPI.",
+    "Personal portfolio of Jair León, Full-Stack & Cloud Engineer specializing in NestJS, TypeScript, Python, and Google Cloud.",
   openGraph: {
-    title: "Jair León — Backend & AI Engineer",
-    description: "Personal portfolio of Jair León, Backend & AI Engineer.",
-    url: "https://biggielion.dev",
+    title: "Jair León — Full-Stack & Cloud Engineer",
+    description: "Personal portfolio of Jair León, Full-Stack & Cloud Engineer.",
+    url: "https://www.jair.codes",
     siteName: "Jair León",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jair León — Backend & AI Engineer",
+    title: "Jair León — Full-Stack & Cloud Engineer",
     creator: "@_Biggie_Lion",
   },
 };

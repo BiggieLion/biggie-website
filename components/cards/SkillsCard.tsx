@@ -5,7 +5,7 @@ const skills = [
   "TypeScript", "JavaScript", "Python", "NestJS",
   "Node.js", "Flask", "Angular", "Google Cloud",
   "AWS", "Azure", "Docker", "Kubernetes",
-  "MySQL", "MongoDB", "Redis", "REST APIs", "AI/ML",
+  "MySQL", "MongoDB", "Redis", "Prisma", "REST APIs", "AI/ML",
 ];
 
 function RestIcon() {

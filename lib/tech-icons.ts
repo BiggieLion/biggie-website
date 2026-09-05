@@ -19,4 +19,5 @@ export const techIcons: Record<string, { icon: string; invert?: boolean }> = {
   "scikit-learn": { icon: `${CDN}/scikitlearn/scikitlearn-original.svg` },
   Azure:       { icon: `${CDN}/azure/azure-original.svg` },
   Kubernetes:  { icon: `${CDN}/kubernetes/kubernetes-original.svg` },
+  Prisma:      { icon: `${CDN}/prisma/prisma-original.svg`, invert: true },
 };
