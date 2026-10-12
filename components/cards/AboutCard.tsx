@@ -6,16 +6,17 @@ export function AboutCard() {
           About
         </h2>
         <p className="font-display text-2xl sm:text-[1.65rem] font-semibold tracking-tight text-foreground leading-snug">
-          Building systems that stay reliable under load.
+          Idempotent, replayable, observable — and fast.
         </p>
       </div>
       <p className="text-muted text-sm leading-relaxed max-w-md">
-        Based in Mexico. Currently at{" "}
-        <span className="text-foreground font-medium">Grupo Rotoplas</span>,
-        shipping event-driven sync across HubSpot, Bringoz, Commercetools, and
-        Fluent OMS — with OpenTelemetry end to end. Previously AI document
-        pipelines at FP Alpha; side work with{" "}
-        <span className="text-foreground font-medium">Google</span>.
+        Based in Mexico City. At{" "}
+        <span className="text-foreground font-medium">Grupo Rotoplas</span> I
+        lead the integration platform syncing HubSpot with Bringoz,
+        Commercetools and Fluent OMS (97–100% test coverage, OpenTelemetry and
+        Terraform as code) and co-lead a greenfield B2B operational CRM on
+        NestJS and PostgreSQL. Previously GPT-powered document extraction at{" "}
+        <span className="text-foreground font-medium">FP Alpha</span>.
       </p>
     </div>
   );
