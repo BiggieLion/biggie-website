@@ -77,7 +77,7 @@ export function HeroCard() {
               Jair León
             </h1>
             <p className="text-accent font-medium text-sm sm:text-[0.95rem] mt-3 sm:mt-4">
-              Full-Stack & Cloud Engineer
+              Backend & Platform Engineer
             </p>
           </div>
           <ThemeToggle />
@@ -85,8 +85,9 @@ export function HeroCard() {
 
         <div>
           <p className="text-muted text-sm sm:text-base leading-relaxed max-w-sm">
-            Event-driven platforms and AI-powered products that scale — NestJS,
-            TypeScript, and Google Cloud.
+            Event-driven integration platforms that make CRM, logistics and
+            commerce systems agree with each other — NestJS, TypeScript,
+            PostgreSQL and Google Cloud.
           </p>
           <div className="flex gap-2.5 mt-5 sm:mt-7 flex-wrap">
             <a

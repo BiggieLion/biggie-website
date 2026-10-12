@@ -1,6 +1,6 @@
-# Jair León — Backend & AI Engineer
+# Jair León — Backend & Platform Engineer
 
-Personal portfolio of Jair León, a Telematics & Backend/AI Engineer specializing in NestJS, TypeScript, Python, and FastAPI. Built with a bento grid layout. Features live widgets for Discord status, Apple Music last played, and local weather.
+Personal portfolio of Jair León, a Backend & Platform Engineer specializing in NestJS, TypeScript, PostgreSQL, Google Cloud and Terraform. Built with a bento grid layout. Features live widgets for Discord status, Apple Music last played, and local weather.
 
 ## Stack
 
@@ -57,6 +57,7 @@ app/
 │   ├── lastfm/route.ts     # Last.fm proxy
 │   └── weather/route.ts    # OpenWeatherMap proxy
 ├── layout.tsx
+├── not-found.tsx
 ├── page.tsx
 └── globals.css
 components/
@@ -75,6 +76,8 @@ components/
 └── UnavailableState.tsx
 lib/
 └── tech-icons.ts           # Tech stack icon mappings
+public/
+└── resume.pdf              # Résumé served by the hero card modal
 ```
 
 ## Deploy

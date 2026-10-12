@@ -20,4 +20,7 @@ export const techIcons: Record<string, { icon: string; invert?: boolean }> = {
   Azure:       { icon: `${CDN}/azure/azure-original.svg` },
   Kubernetes:  { icon: `${CDN}/kubernetes/kubernetes-original.svg` },
   Prisma:      { icon: `${CDN}/prisma/prisma-original.svg`, invert: true },
+  Terraform:   { icon: `${CDN}/terraform/terraform-original.svg` },
+  OpenTelemetry: { icon: `${CDN}/opentelemetry/opentelemetry-original.svg` },
+  Vitest:      { icon: `${CDN}/vitest/vitest-original.svg` },
 };
