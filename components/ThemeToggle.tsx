@@ -5,19 +5,30 @@ import { useTheme } from "next-themes";
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
 
-  // resolvedTheme is undefined during SSR — renders a placeholder until hydrated
-  if (!resolvedTheme) return <div className="w-8 h-8" />;
+  // resolvedTheme is undefined until hydrated
+  if (!resolvedTheme) return <div className="w-9 h-9" aria-hidden="true" />;
 
   const isDark = resolvedTheme === "dark";
 
   return (
     <button
+      type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle theme"
-      className="p-2 rounded-lg text-muted hover:text-foreground hover:bg-card-border transition-colors cursor-pointer"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="relative z-20 p-2.5 rounded-lg text-muted hover:text-foreground hover:bg-card-border/80 transition-colors cursor-pointer"
     >
       {isDark ? (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
           <circle cx="12" cy="12" r="5" />
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
@@ -29,7 +40,17 @@ export function ThemeToggle() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       ) : (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       )}
