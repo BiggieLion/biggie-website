@@ -61,13 +61,13 @@ export function HeroCard() {
 
   return (
     <div className="bento-card bento-card-hero flex flex-col sm:flex-row overflow-hidden">
-      <div className="relative z-[1] flex flex-col justify-between p-6 sm:p-8 flex-1 min-w-0 gap-10">
+      <div className="relative z-[2] flex flex-col justify-between p-6 sm:p-8 flex-1 min-w-0 gap-6 sm:gap-10">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="font-display text-[2.75rem] sm:text-5xl md:text-[3.35rem] font-bold tracking-tight text-foreground leading-[0.92]">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-[3.35rem] font-bold tracking-tight text-foreground leading-[0.95]">
               Jair León
             </h1>
-            <p className="text-accent font-medium text-sm sm:text-[0.95rem] mt-4">
+            <p className="text-accent font-medium text-sm sm:text-[0.95rem] mt-3 sm:mt-4">
               Full-Stack & Cloud Engineer
             </p>
           </div>
@@ -79,7 +79,7 @@ export function HeroCard() {
             Event-driven platforms and AI-powered products that scale — NestJS,
             TypeScript, and Google Cloud.
           </p>
-          <div className="flex gap-2.5 mt-7 flex-wrap">
+          <div className="flex gap-2.5 mt-5 sm:mt-7 flex-wrap">
             <a
               href="mailto:hleonr1300@gmail.com"
               className="px-4 py-2.5 rounded-lg text-sm font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
@@ -153,7 +153,7 @@ export function HeroCard() {
         </div>
       )}
 
-      <div className="relative h-64 sm:h-auto sm:w-52 md:w-64 shrink-0 self-stretch overflow-hidden border-t sm:border-t-0 sm:border-l border-card-border/70">
+      <div className="relative h-48 sm:h-auto sm:w-52 md:w-64 shrink-0 self-stretch overflow-hidden border-t sm:border-t-0 sm:border-l border-card-border/70">
         <div
           className="absolute inset-y-0 left-0 z-[1] w-16 pointer-events-none hidden sm:block bg-gradient-to-r from-[color-mix(in_oklab,var(--card-bg)_90%,transparent)] to-transparent"
           aria-hidden="true"
@@ -167,7 +167,7 @@ export function HeroCard() {
             src="/avatar.png"
             alt="Jair León"
             fill
-            className="object-cover object-[center_18%]"
+            className="object-cover object-[center_15%]"
             sizes="(max-width: 640px) 100vw, 256px"
             priority
             onError={() => setAvatarFailed(true)}

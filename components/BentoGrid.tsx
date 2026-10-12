@@ -38,7 +38,7 @@ const quietItem = {
 
 export function BentoGrid() {
   return (
-    <main className="relative z-[1] min-h-screen px-4 py-8 md:px-8 md:py-14 flex items-center">
+    <main className="relative z-[1] min-h-screen px-4 py-8 md:px-8 md:py-14 flex items-start md:items-center">
       <motion.div
         variants={container}
         initial="hidden"
