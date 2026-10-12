@@ -162,7 +162,7 @@ export function HeroCard() {
         </div>
       )}
 
-      <div className="relative h-48 sm:h-auto sm:w-52 md:w-64 shrink-0 self-stretch overflow-hidden border-t sm:border-t-0 sm:border-l border-card-border/70">
+      <div className="relative h-56 sm:h-auto sm:w-52 md:w-64 shrink-0 self-stretch overflow-hidden border-t sm:border-t-0 sm:border-l border-card-border/70">
         <div
           className="absolute inset-y-0 left-0 z-[1] w-16 pointer-events-none hidden sm:block bg-gradient-to-r from-[color-mix(in_oklab,var(--card-bg)_90%,transparent)] to-transparent"
           aria-hidden="true"
