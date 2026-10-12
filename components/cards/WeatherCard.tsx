@@ -2,6 +2,7 @@
 
 import useSWR from "swr";
 import { UnavailableState } from "@/components/UnavailableState";
+import { WeatherIcon } from "@/components/icons";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -42,21 +43,6 @@ const WeatherGlyph = ({ condition }: { condition: string }) => {
   }
 };
 
-const WeatherIcon = (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-4 h-4"
-    aria-hidden="true"
-  >
-    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" />
-  </svg>
-);
-
 export function WeatherCard() {
   const { data, isLoading } = useSWR("/api/weather", fetcher, {
     refreshInterval: 600000,
@@ -83,7 +69,7 @@ export function WeatherCard() {
       )}
 
       {!isLoading && hasError && (
-        <UnavailableState icon={WeatherIcon} label="Weather unavailable" />
+        <UnavailableState icon={<WeatherIcon />} label="Weather unavailable" />
       )}
 
       {!isLoading && data && !data.error && (

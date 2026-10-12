@@ -3,14 +3,9 @@
 import useSWR from "swr";
 import Image from "next/image";
 import { UnavailableState } from "@/components/UnavailableState";
+import { MusicIcon, MusicNoteIcon } from "@/components/icons";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
-const MusicIcon = (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-  </svg>
-);
 
 export function MusicCard() {
   const { data, isLoading } = useSWR("/api/lastfm", fetcher, { refreshInterval: 60000 });
@@ -23,14 +18,7 @@ export function MusicCard() {
         <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
           Music
         </h2>
-        <svg
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="w-4 h-4 text-muted"
-          aria-hidden="true"
-        >
-          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 14.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z" />
-        </svg>
+        <MusicNoteIcon />
       </div>
 
       {isLoading && (
@@ -45,7 +33,7 @@ export function MusicCard() {
       )}
 
       {!isLoading && hasError && (
-        <UnavailableState icon={MusicIcon} label="Music unavailable" />
+        <UnavailableState icon={<MusicIcon />} label="Music unavailable" />
       )}
 
       {!isLoading && track && (
@@ -60,7 +48,7 @@ export function MusicCard() {
             />
           ) : (
             <div className="w-12 h-12 rounded-lg bg-card-border shrink-0 flex items-center justify-center text-muted">
-              {MusicIcon}
+              <MusicIcon />
             </div>
           )}
           <div className="min-w-0">
