@@ -1,8 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
+// Client-only to avoid next-themes hydration mismatch on the toggle control
+const ThemeToggle = dynamic(
+  () =>
+    import("@/components/ThemeToggle").then((m) => ({
+      default: m.ThemeToggle,
+    })),
+  { ssr: false, loading: () => <div className="w-9 h-9" aria-hidden="true" /> },
+);
 
 export function HeroCard() {
   const [avatarFailed, setAvatarFailed] = useState(false);
