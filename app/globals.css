@@ -11,38 +11,64 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-syne);
   --font-mono: var(--font-geist-mono);
 }
 
 :root {
-  --background: #f8f8f8;
-  --foreground: #111111;
-  --card-bg: #ffffff;
-  --card-border: #e5e7eb;
-  --accent: #0891b2;
+  --background: #eef2f4;
+  --foreground: #12171c;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: #d5dde3;
+  --accent: #0e7490;
   --accent-fg: #ffffff;
-  --muted: #6b7280;
+  --muted: #5b6770;
+  --page-glow: rgba(14, 116, 144, 0.12);
+  --page-grid: rgba(18, 23, 28, 0.05);
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #f5f5f5;
-  --card-bg: #141414;
-  --card-border: #262626;
-  --accent: #22d3ee;
-  --accent-fg: #0a0a0a;
-  --muted: #a3a3a3;
+  --background: #0b0d10;
+  --foreground: #f2f0ea;
+  --card-bg: rgba(18, 21, 26, 0.82);
+  --card-border: #2a3038;
+  --accent: #2dd4bf;
+  --accent-fg: #041016;
+  --muted: #9a9e96;
+  --page-glow: rgba(45, 212, 191, 0.1);
+  --page-grid: rgba(242, 240, 234, 0.035);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Page atmosphere: soft glow + subtle grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% -10%, var(--page-glow), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 110%, var(--page-glow), transparent 50%),
+    linear-gradient(var(--page-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--page-grid) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-position: center, center, center, center;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.font-display {
+  font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
 }
 
 .bento-card {
@@ -51,9 +77,11 @@ body {
   border-radius: 1rem;
   height: 100%;
   min-height: 140px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.25s ease, background-color 0.2s ease;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Noise/grain texture overlay on every card */
@@ -64,7 +92,7 @@ body {
   border-radius: inherit;
   pointer-events: none;
   z-index: 10;
-  opacity: 0.04;
+  opacity: 0.035;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
@@ -72,5 +100,15 @@ body {
 }
 
 .dark .bento-card::after {
-  opacity: 0.07;
+  opacity: 0.06;
+}
+
+.bento-card-hero {
+  min-height: 280px;
+  border-color: color-mix(in oklab, var(--accent) 28%, var(--card-border));
+}
+
+.bento-card-quiet {
+  min-height: 120px;
+  opacity: 0.96;
 }

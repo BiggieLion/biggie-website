@@ -11,7 +11,9 @@ export function UnavailableState({ icon, label, hint }: UnavailableStateProps) {
         {icon}
       </div>
       <p className="text-xs font-medium text-muted">{label}</p>
-      {hint && <p className="text-[10px] text-muted/50 leading-tight max-w-[120px]">{hint}</p>}
+      {hint && (
+        <p className="text-[11px] text-muted leading-tight max-w-[140px]">{hint}</p>
+      )}
     </div>
   );
 }

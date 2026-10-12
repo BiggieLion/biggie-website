@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const ThemeToggle = dynamic(
   () =>
@@ -15,69 +15,95 @@ const ThemeToggle = dynamic(
 export function HeroCard() {
   const [avatarFailed, setAvatarFailed] = useState(false);
   const [showResume, setShowResume] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const titleId = useId();
 
   useEffect(() => {
     if (!showResume) return;
+
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShowResume(false);
+      if (e.key === "Escape") {
+        setShowResume(false);
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const modal = document.getElementById("resume-modal");
+      if (!modal) return;
+
+      const focusable = modal.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocusedRef.current?.focus();
+    };
   }, [showResume]);
 
   return (
-    <div className="bento-card col-span-2 row-span-1 flex overflow-hidden">
-      {/* Left: text content */}
-      <div className="flex flex-col justify-between p-6 flex-1 min-w-0">
-        <div className="flex items-start justify-between">
+    <div className="bento-card bento-card-hero flex flex-col sm:flex-row overflow-hidden">
+      {/* Left: brand + CTAs */}
+      <div className="relative z-[1] flex flex-col justify-between p-6 sm:p-7 flex-1 min-w-0 gap-8">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-3">
+              Portfolio
+            </p>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[0.95]">
               Jair León
             </h1>
-            <p className="text-accent font-medium text-sm mt-0.5">
-              Full-Stack Engineer · NestJS · TypeScript · GCP
+            <p className="text-accent font-medium text-sm mt-3">
+              Full-Stack & Cloud Engineer
             </p>
           </div>
           <ThemeToggle />
         </div>
 
         <div>
-          <p className="text-muted text-sm leading-relaxed">
-            I build event-driven platforms and AI-powered products that scale.
-            4+ years shipping reliable APIs with NestJS, TypeScript, and
-            Google Cloud.
+          <p className="text-muted text-sm sm:text-base leading-relaxed max-w-md">
+            Event-driven platforms and AI-powered products that scale — NestJS,
+            TypeScript, and Google Cloud.
           </p>
-          <div className="flex gap-2 mt-4 flex-wrap">
-            {["AI / ML", "Backend", "Frontend", "Automation"].map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <a
-            href="https://www.linkedin.com/in/jairleon/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-accent hover:underline mt-3 inline-block"
-          >
-            Read more...
-          </a>
-          {/* CTAs */}
-          <div className="flex gap-2 mt-5 flex-wrap">
+          <div className="flex gap-2 mt-6 flex-wrap">
             <a
               href="mailto:hleonr1300@gmail.com"
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
+              className="px-4 py-2 rounded-lg text-sm font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
             >
-              Get in touch →
+              Get in touch
             </a>
             <button
+              type="button"
               onClick={() => setShowResume(true)}
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-lg text-sm font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors cursor-pointer"
             >
-              View Resume ↗
+              View resume
             </button>
           </div>
         </div>
@@ -90,11 +116,15 @@ export function HeroCard() {
           onClick={() => setShowResume(false)}
         >
           <div
-            className="relative w-full max-w-3xl h-[90vh] bg-card rounded-2xl overflow-hidden flex flex-col"
+            id="resume-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            className="relative w-full max-w-3xl h-[90vh] bg-card rounded-2xl overflow-hidden flex flex-col border border-card-border"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-card-border shrink-0">
-              <span className="text-sm font-semibold text-foreground">
+              <span id={titleId} className="text-sm font-semibold text-foreground">
                 Résumé
               </span>
               <div className="flex items-center gap-3">
@@ -106,11 +136,24 @@ export function HeroCard() {
                   Download
                 </a>
                 <button
+                  ref={closeButtonRef}
+                  type="button"
                   onClick={() => setShowResume(false)}
-                  className="text-muted hover:text-foreground transition-colors text-lg leading-none cursor-pointer"
-                  aria-label="Close"
+                  className="text-muted hover:text-foreground transition-colors p-1 rounded-md cursor-pointer"
+                  aria-label="Close résumé"
                 >
-                  ✕
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -124,9 +167,13 @@ export function HeroCard() {
       )}
 
       {/* Right: portrait */}
-      <div className="relative w-40 shrink-0 self-stretch">
+      <div className="relative h-56 sm:h-auto sm:w-48 md:w-56 shrink-0 self-stretch overflow-hidden">
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t sm:bg-gradient-to-l from-transparent via-transparent to-[color-mix(in_oklab,var(--card-bg)_55%,transparent)]"
+          aria-hidden="true"
+        />
         {avatarFailed ? (
-          <div className="absolute inset-0 flex items-center justify-center text-accent text-3xl font-bold">
+          <div className="absolute inset-0 flex items-center justify-center font-display text-accent text-4xl font-bold">
             JL
           </div>
         ) : (
@@ -134,8 +181,8 @@ export function HeroCard() {
             src="/avatar.png"
             alt="Jair León"
             fill
-            className="object-cover object-top"
-            sizes="160px"
+            className="object-cover object-top scale-[1.02]"
+            sizes="(max-width: 640px) 100vw, 224px"
             priority
             onError={() => setAvatarFailed(true)}
           />
