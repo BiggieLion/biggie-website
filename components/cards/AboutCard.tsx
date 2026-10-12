@@ -1,15 +1,15 @@
 export function AboutCard() {
   return (
-    <div className="bento-card p-6 sm:p-7 flex flex-col justify-between gap-6">
+    <div className="bento-card p-6 sm:p-8 flex flex-col justify-between gap-8 min-h-[300px]">
       <div>
-        <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-4">
+        <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-5">
           About
         </h2>
-        <p className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-foreground leading-snug">
+        <p className="font-display text-2xl sm:text-[1.65rem] font-semibold tracking-tight text-foreground leading-snug">
           Building systems that stay reliable under load.
         </p>
       </div>
-      <p className="text-muted text-sm leading-relaxed">
+      <p className="text-muted text-sm leading-relaxed max-w-md">
         Based in Mexico. Currently at{" "}
         <span className="text-foreground font-medium">Grupo Rotoplas</span>,
         shipping event-driven sync across HubSpot, Bringoz, Commercetools, and

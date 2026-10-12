@@ -17,27 +17,27 @@
 }
 
 :root {
-  --background: #eef2f4;
-  --foreground: #12171c;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: #d5dde3;
-  --accent: #0e7490;
+  --background: #e8eef2;
+  --foreground: #10161c;
+  --card-bg: rgba(255, 255, 255, 0.86);
+  --card-border: #c9d4dc;
+  --accent: #0f766e;
   --accent-fg: #ffffff;
-  --muted: #5b6770;
-  --page-glow: rgba(14, 116, 144, 0.12);
-  --page-grid: rgba(18, 23, 28, 0.05);
+  --muted: #44525c;
+  --page-glow: rgba(15, 118, 110, 0.14);
+  --page-grid: rgba(16, 22, 28, 0.055);
 }
 
 .dark {
-  --background: #0b0d10;
-  --foreground: #f2f0ea;
-  --card-bg: rgba(18, 21, 26, 0.82);
-  --card-border: #2a3038;
+  --background: #090b0e;
+  --foreground: #f4f1e8;
+  --card-bg: rgba(16, 19, 24, 0.88);
+  --card-border: #2c333c;
   --accent: #2dd4bf;
   --accent-fg: #041016;
-  --muted: #9a9e96;
-  --page-glow: rgba(45, 212, 191, 0.1);
-  --page-grid: rgba(242, 240, 234, 0.035);
+  --muted: #a7ada4;
+  --page-glow: rgba(45, 212, 191, 0.12);
+  --page-grid: rgba(244, 241, 232, 0.04);
 }
 
 body {
@@ -104,11 +104,15 @@ body::before {
 }
 
 .bento-card-hero {
-  min-height: 280px;
-  border-color: color-mix(in oklab, var(--accent) 28%, var(--card-border));
+  min-height: 300px;
+  border-color: color-mix(in oklab, var(--accent) 34%, var(--card-border));
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 12%, transparent);
 }
 
 .bento-card-quiet {
-  min-height: 120px;
-  opacity: 0.96;
+  min-height: 132px;
+}
+
+.bento-card-project {
+  min-height: 188px;
 }

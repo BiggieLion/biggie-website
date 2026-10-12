@@ -69,7 +69,7 @@ export function ProjectCard({ project }: { project: Project }) {
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="bento-card p-5 flex flex-col justify-between group hover:border-accent/45 hover:-translate-y-0.5 transition-all"
+      className="bento-card bento-card-project p-5 flex flex-col justify-between group hover:border-accent/45 hover:-translate-y-0.5 transition-all"
     >
       <div>
         <div className="flex items-start justify-between gap-2 mb-2">

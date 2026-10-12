@@ -1,16 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
-
-const ThemeToggle = dynamic(
-  () =>
-    import("@/components/ThemeToggle").then((m) => ({
-      default: m.ThemeToggle,
-    })),
-  { ssr: false, loading: () => <div className="w-8 h-8" /> },
-);
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function HeroCard() {
   const [avatarFailed, setAvatarFailed] = useState(false);
@@ -69,17 +61,13 @@ export function HeroCard() {
 
   return (
     <div className="bento-card bento-card-hero flex flex-col sm:flex-row overflow-hidden">
-      {/* Left: brand + CTAs */}
-      <div className="relative z-[1] flex flex-col justify-between p-6 sm:p-7 flex-1 min-w-0 gap-8">
+      <div className="relative z-[1] flex flex-col justify-between p-6 sm:p-8 flex-1 min-w-0 gap-10">
         <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-3">
-              Portfolio
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground leading-[0.95]">
+          <div className="min-w-0">
+            <h1 className="font-display text-[2.75rem] sm:text-5xl md:text-[3.35rem] font-bold tracking-tight text-foreground leading-[0.92]">
               Jair León
             </h1>
-            <p className="text-accent font-medium text-sm mt-3">
+            <p className="text-accent font-medium text-sm sm:text-[0.95rem] mt-4">
               Full-Stack & Cloud Engineer
             </p>
           </div>
@@ -87,21 +75,21 @@ export function HeroCard() {
         </div>
 
         <div>
-          <p className="text-muted text-sm sm:text-base leading-relaxed max-w-md">
+          <p className="text-muted text-sm sm:text-base leading-relaxed max-w-sm">
             Event-driven platforms and AI-powered products that scale — NestJS,
             TypeScript, and Google Cloud.
           </p>
-          <div className="flex gap-2 mt-6 flex-wrap">
+          <div className="flex gap-2.5 mt-7 flex-wrap">
             <a
               href="mailto:hleonr1300@gmail.com"
-              className="px-4 py-2 rounded-lg text-sm font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
+              className="px-4 py-2.5 rounded-lg text-sm font-semibold bg-accent text-accent-fg hover:opacity-90 transition-opacity"
             >
               Get in touch
             </a>
             <button
               type="button"
               onClick={() => setShowResume(true)}
-              className="px-4 py-2 rounded-lg text-sm font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-lg text-sm font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors cursor-pointer"
             >
               View resume
             </button>
@@ -109,7 +97,6 @@ export function HeroCard() {
         </div>
       </div>
 
-      {/* Resume modal */}
       {showResume && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
@@ -166,10 +153,9 @@ export function HeroCard() {
         </div>
       )}
 
-      {/* Right: portrait */}
-      <div className="relative h-56 sm:h-auto sm:w-48 md:w-56 shrink-0 self-stretch overflow-hidden">
+      <div className="relative h-64 sm:h-auto sm:w-52 md:w-64 shrink-0 self-stretch overflow-hidden border-t sm:border-t-0 sm:border-l border-card-border/70">
         <div
-          className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t sm:bg-gradient-to-l from-transparent via-transparent to-[color-mix(in_oklab,var(--card-bg)_55%,transparent)]"
+          className="absolute inset-y-0 left-0 z-[1] w-16 pointer-events-none hidden sm:block bg-gradient-to-r from-[color-mix(in_oklab,var(--card-bg)_90%,transparent)] to-transparent"
           aria-hidden="true"
         />
         {avatarFailed ? (
@@ -181,8 +167,8 @@ export function HeroCard() {
             src="/avatar.png"
             alt="Jair León"
             fill
-            className="object-cover object-top scale-[1.02]"
-            sizes="(max-width: 640px) 100vw, 224px"
+            className="object-cover object-[center_18%]"
+            sizes="(max-width: 640px) 100vw, 256px"
             priority
             onError={() => setAvatarFailed(true)}
           />
