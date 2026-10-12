@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { HeroCard } from "@/components/cards/HeroCard";
 import { AboutCard } from "@/components/cards/AboutCard";
 import { SkillsCard } from "@/components/cards/SkillsCard";
@@ -10,36 +10,47 @@ import { WeatherCard } from "@/components/cards/WeatherCard";
 import { SocialCard } from "@/components/cards/SocialCard";
 import { ProjectCard, projects } from "@/components/cards/ProjectCard";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.07 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } },
-};
-
-// projects[0] Credit Risk Platform · Backend
-// projects[1] Credit Risk Platform · AI
-// projects[2] TimothyApp
-// projects[3] Introducción a Mongoose
-// projects[4] Credit Risk Platform · Frontend
-// projects[5] hours-backend (not rendered)
-
 export function BentoGrid() {
+  const reduceMotion = useReducedMotion();
+
+  const container = {
+    hidden: { opacity: reduceMotion ? 1 : 0 },
+    show: {
+      opacity: 1,
+      transition: reduceMotion ? { duration: 0 } : { staggerChildren: 0.08 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 18 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] as const },
+    },
+  };
+
+  const quietItem = {
+    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: reduceMotion
+        ? { duration: 0 }
+        : { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.05 },
+    },
+  };
+
   return (
-    <main className="min-h-screen bg-background px-4 py-8 md:px-8 md:py-12 flex items-center">
+    <main className="relative z-[1] min-h-screen px-4 py-8 md:px-8 md:py-14 flex items-start md:items-center">
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
       >
-        {/* Row 1: Hero (2 cols) | About (2 cols) */}
         <motion.div variants={item} className="sm:col-span-2 lg:col-span-2">
           <HeroCard />
         </motion.div>
@@ -47,7 +58,6 @@ export function BentoGrid() {
           <AboutCard />
         </motion.div>
 
-        {/* Row 2: CRP Backend | CRP AI | TimothyApp | Mongoose (1 col each) */}
         <div id="projects" className="contents">
           {projects.slice(0, 4).map((project) => (
             <motion.div key={project.name} variants={item} className="lg:col-span-1">
@@ -56,7 +66,6 @@ export function BentoGrid() {
           ))}
         </div>
 
-        {/* Row 3: CRP Frontend (1) | Connect (1) | Tech Stack (2) */}
         <motion.div variants={item} className="lg:col-span-1">
           <ProjectCard project={projects[4]} />
         </motion.div>
@@ -67,14 +76,13 @@ export function BentoGrid() {
           <SkillsCard />
         </motion.div>
 
-        {/* Row 4: Weather (1) | Music (1) | Discord (2) */}
-        <motion.div variants={item} className="lg:col-span-1">
+        <motion.div variants={quietItem} className="lg:col-span-1">
           <WeatherCard />
         </motion.div>
-        <motion.div variants={item} className="lg:col-span-1">
+        <motion.div variants={quietItem} className="lg:col-span-1">
           <MusicCard />
         </motion.div>
-        <motion.div variants={item} className="sm:col-span-2 lg:col-span-2">
+        <motion.div variants={quietItem} className="sm:col-span-2 lg:col-span-2">
           <DiscordCard />
         </motion.div>
       </motion.div>

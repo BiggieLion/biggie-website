@@ -30,8 +30,8 @@ const socials = [
 
 export function SocialCard() {
   return (
-    <div className="bento-card col-span-1 row-span-1 p-6 flex flex-col justify-between">
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-muted mb-4">
+    <div className="bento-card p-5 sm:p-6 flex flex-col justify-between">
+      <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-4">
         Connect
       </h2>
       <div className="flex flex-col gap-3 flex-1 justify-center">

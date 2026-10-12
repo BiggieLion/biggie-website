@@ -13,9 +13,11 @@ export function MusicCard() {
   const hasError = data?.error || (!isLoading && data && !track);
 
   return (
-    <div className="bento-card col-span-1 row-span-1 p-5 flex flex-col">
+    <div className="bento-card bento-card-quiet p-5 flex flex-col">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">Music</h2>
+        <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
+          Music
+        </h2>
         <MusicNoteIcon />
       </div>
 
@@ -31,11 +33,7 @@ export function MusicCard() {
       )}
 
       {!isLoading && hasError && (
-        <UnavailableState
-          icon={<MusicIcon />}
-          label="Music unavailable"
-          hint="Configure LASTFM_API_KEY and LASTFM_USERNAME"
-        />
+        <UnavailableState icon={<MusicIcon />} label="Music unavailable" />
       )}
 
       {!isLoading && track && (
@@ -58,10 +56,12 @@ export function MusicCard() {
               {track.nowPlaying && (
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shrink-0" />
               )}
-              <p className="text-sm font-semibold text-foreground truncate">{track.name}</p>
+              <p className="font-display text-sm font-semibold text-foreground truncate">
+                {track.name}
+              </p>
             </div>
             <p className="text-xs text-muted truncate">{track.artist}</p>
-            <p className="text-xs text-muted/60 truncate">{track.album}</p>
+            <p className="text-xs text-muted truncate">{track.album}</p>
           </div>
         </div>
       )}

@@ -40,8 +40,8 @@ export function DiscordCard() {
   const activity = presence?.activities?.[0];
 
   return (
-    <div className="bento-card col-span-1 row-span-1 p-5 flex flex-col">
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-muted mb-3">
+    <div className="bento-card bento-card-quiet p-5 flex flex-col">
+      <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-3">
         Discord
       </h2>
 
@@ -59,11 +59,7 @@ export function DiscordCard() {
       )}
 
       {!isLoading && hasError && (
-        <UnavailableState
-          icon={<DiscordIcon />}
-          label="Discord unavailable"
-          hint="Configure DISCORD_USER_ID and join discord.gg/lanyard"
-        />
+        <UnavailableState icon={<DiscordIcon />} label="Discord unavailable" />
       )}
 
       {!isLoading && presence && (
@@ -89,7 +85,7 @@ export function DiscordCard() {
               />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-foreground leading-none truncate">
+              <p className="font-display text-sm font-semibold text-foreground leading-none truncate">
                 {presence.discord_user?.global_name ?? presence.discord_user?.username ?? "BiggieLion"}
               </p>
               <p className="text-xs text-muted mt-1">
@@ -116,7 +112,7 @@ export function DiscordCard() {
                   <p className="text-xs text-muted truncate">{activity.details}</p>
                 )}
                 {activity.state && (
-                  <p className="text-xs text-muted/60 truncate">{activity.state}</p>
+                  <p className="text-xs text-muted truncate">{activity.state}</p>
                 )}
               </div>
             </div>
